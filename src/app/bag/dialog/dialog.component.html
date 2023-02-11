@@ -1,0 +1,42 @@
+
+<div mat-dialog-content>
+    <form  class="form" [formGroup]="detailProfile" (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Наименование</mat-label>
+            <input id="name" required  matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Колличество</mat-label>
+            <input required matInput formControlName="count">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Площадь</mat-label>
+            <input required matInput formControlName="area">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Длина</mat-label>
+            <input required matInput formControlName="length">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Ширина</mat-label>
+            <input required matInput formControlName="width">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Примечание</mat-label>
+            <input matInput formControlName="note">
+        </mat-form-field>
+        
+        <button [disabled]="detailProfile.invalid" mat-button mat-dialog-close type="submit">Подтвердить</button>
+
+        <mat-error *ngIf="detailProfile.invalid">
+            заполните необходимые поля
+        </mat-error>
+        
+    </form>
+</div>

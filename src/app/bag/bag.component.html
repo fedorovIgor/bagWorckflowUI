@@ -1,0 +1,60 @@
+<div>
+    <h2>информация  по сумке</h2>
+</div>
+
+
+<mat-form-field class="example-full-width">
+    <mat-label>Название Сумки</mat-label>
+    <input matInput [(ngModel)]="bag.name">
+</mat-form-field>
+ 
+<mat-form-field class="example-full-width">
+    <mat-label>Артикул</mat-label>
+    <input matInput [(ngModel)]="bag.attribute">
+</mat-form-field>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                
+                <th>Наименование</th>
+                <th>Колличество</th>
+                <th>Площадь</th>
+                <th>Длина</th>
+                <th>Ширина</th>
+                <th>Примечание</th>
+                <th>Изменить</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of bag.details">
+                
+                <td>{{ d.name }}</td>
+                <td>{{ d.count }}</td>
+                <td>{{ d.area }}</td>
+                <td>{{ d.length }}</td>
+                <td>{{ d.width }}</td>
+                <td>{{ d.note }}</td>
+                <td> 
+                    <button mat-mini-fab (click)="deleteDetail(d)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                    
+                    <button mat-mini-fab (click)="openEditDialog(d)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>
+    <button mat-raised-button (click)="openDialog()">добавить деталь</button>
+</p>
+
+<p>
+    <button mat-button routerLink="/bag-list" mat-raised-button (click)="saveBag()">Сохранить</button>
+</p>

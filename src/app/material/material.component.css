@@ -1,0 +1,13 @@
+.table {
+    width: 70%;
+    position: relative;
+}
+
+.mat-elevation-z8 {
+    position: absolute;
+    left: 20%;
+}
+
+.filter {
+    margin: 10px;
+}
