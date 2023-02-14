@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { BagService } from '../bag.service';
 import { Bag } from '../model/bag';
 import { Detail } from '../model/detail';
@@ -20,7 +21,8 @@ export class BagComponent {
   };
 
   constructor(public dialog: MatDialog,
-    private bagService: BagService) {}
+    private bagService: BagService,
+    private router: Router) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -68,8 +70,8 @@ export class BagComponent {
 
 
   saveBag() {
-    this.bagService.saveBag(this.bag);
-    console.log(this.bag)
+    this.bagService.saveBag(this.bag)
+      .subscribe(b => this.router.navigateByUrl("/bag-list"));
   }
 
 }

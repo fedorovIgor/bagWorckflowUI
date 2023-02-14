@@ -21,9 +21,10 @@ export class MaterialComponent implements OnInit {
 
   ngOnInit(): void {
     this.bagService.getMaterials()
-      .subscribe(m => this.materials = m);
- 
-    this.dataSource = new MatTableDataSource(this.materials);
+      .subscribe(m =>{
+        this.materials = m;
+        this.dataSource = new MatTableDataSource(this.materials);
+      });
   }
 
   applyFilter(event: Event) {
@@ -42,13 +43,17 @@ export class MaterialComponent implements OnInit {
       if (result !== undefined) {
         dialogRef.close();
       }
+
       const index = this.materials.indexOf(material);
 
       if (index == -1)
           dialogRef.close();
 
+      this.bagService.updateMaterial(result)
+        .subscribe();
       this.materials[index] = result;
       this.dataSource = new MatTableDataSource(this.materials);
+
       dialogRef.close();
     });
   }
@@ -61,8 +66,12 @@ export class MaterialComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result !== undefined)
-      this.bagService.addMaterial(result);
-      this.dataSource = new MatTableDataSource(this.materials);
+      this.bagService.addMaterial(result)
+        .subscribe((d) => {
+          this.materials.push(d);
+          this.dataSource.data = this.materials
+        });
+      
       dialogRef.close();
     });
   }

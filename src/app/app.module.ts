@@ -27,6 +27,7 @@ import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { MaterialDialogComponent } from './material/dialog/dialog.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MaterialDialogComponent } from './material/dialog/dialog.component';
     MatTableModule,
     MatAutocompleteModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

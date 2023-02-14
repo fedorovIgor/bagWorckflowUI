@@ -1,1 +1,53 @@
-<p>plan-info works!</p>
+<div *ngIf="plan">
+    <h2> План от {{plan.date | date:'shortDate'}}</h2>
+
+    <div *ngIf="cuttingSheets">
+
+        <mat-accordion>
+            <div *ngFor="let c of cuttingSheets">
+       
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ c.bagName }}  {{ c.vendorCode }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        количество сумок: {{ c.count }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+
+                  <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Деталей</th>
+                            <th>Деталей Всего</th>
+                            <th>Материал</th>
+                            <th>Площадь</th>
+                            <th>Длинна</th>
+                            <th>Ширина</th>
+                            <th>Комментарий</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of c.details">
+                            <td>{{ d.detailName }}</td>
+                            <td>{{ d.count }}</td>
+                            <td>{{ d.countTotal }}</td>
+                            <td>{{ d.materialName }}</td>
+                            <td>{{ d.area }}</td>
+                            <td>{{ d.length }}</td>
+                            <td>{{ d.width }}</td>
+                            <td>{{ d.comment }}</td>
+
+                        </tr>
+                    </tbody>
+                  </table>
+                  
+                </mat-expansion-panel>
+                
+            </div>
+        </mat-accordion>
+        
+    </div>
+</div>

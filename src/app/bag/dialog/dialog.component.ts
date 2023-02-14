@@ -11,7 +11,6 @@ import { Detail } from 'src/app/model/detail';
 })
 export class DialogComponent implements OnInit {
 
-
   detailProfile !: FormGroup;
 
   constructor(
@@ -42,9 +41,6 @@ export class DialogComponent implements OnInit {
   
   
   onSubmit() {
-    
-    console.log(this.detailProfile)
-    console.log(this.detailProfile.value.count)
 
     let detail: Detail = {
       "name": this.detailProfile.value.name,

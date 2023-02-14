@@ -1,12 +1,8 @@
 <h2>Создание Плана</h2>
 
-
-
 <div *ngIf="bag" class="addBagForm" [formGroup]="form">
 
     <h2>{{ bag.name }} {{ bag.attribute }} </h2>
-
-    
 
     <mat-form-field class="count" >
         <mat-label>Количество сумок</mat-label>
@@ -45,8 +41,7 @@
 </div>
 
 <button mat-raised-button routerLink="/bag-list"> Выбрать модель сумки </button>
-<button mat-raised-button routerLink="/plan-list" (click)="savePlan()">Сохранить</button>
-
+<button mat-raised-button [disabled]="planInfo.length <= 0" (click)="savePlan()">Сохранить</button>
 
 
 <div *ngFor="let i of planInfo">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import { BagService } from '../bag.service';
 import { Bag } from '../model/bag';
@@ -33,8 +34,9 @@ export class PlanComponent implements OnInit{
 
   constructor(private bagSerrvice : BagService,
               private planService : PlanInfoService,
-              private fb:FormBuilder,
-              public dialog: MatDialog,) {}
+              private fb: FormBuilder,
+              public dialog: MatDialog,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.planInfo = this.planService.getAllPlansInfo()
@@ -43,9 +45,14 @@ export class PlanComponent implements OnInit{
       .subscribe(b => this.bag = b[0]);
 
     this.bagSerrvice.getMaterials()
-      .subscribe(m => this.materialsNames = m.map(
-        mat => mat.name
-      ));
+      .subscribe(m =>  {
+        this.materialsNames = m.map(mat => mat.name);
+
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value || '')),
+        );
+    });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -113,7 +120,8 @@ export class PlanComponent implements OnInit{
 
     
     this.bagSerrvice.savePlan(p)
-      .subscribe(ps => console.log(ps))
+      .subscribe(pl => this.router.navigateByUrl("/plan-list"))
+
     this.planService.clear();
   }
 
