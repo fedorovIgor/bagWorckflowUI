@@ -26,7 +26,7 @@ export class BagComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '30%'
+      width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -42,11 +42,15 @@ export class BagComponent {
 
   openEditDialog(detail: Detail) {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '30%',
+      width: '300px',
       data: detail
     });
 
     dialogRef.afterClosed().subscribe(result => {
+
+      if (result === undefined)
+        return;
+        
       const index = this.bag.details.indexOf(detail);
 
       if (index == -1)

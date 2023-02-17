@@ -34,7 +34,7 @@ export class DialogComponent implements OnInit {
       this.detailProfile.controls["count"].setValue(this.editData.count);
       this.detailProfile.controls["length"].setValue(this.editData.length);
       this.detailProfile.controls["width"].setValue(this.editData.width);
-      this.detailProfile.controls["note"].setValue(this.editData.note);
+      //this.detailProfile.controls["note"].setValue(this.editData.note);
     }
   }
 
@@ -48,7 +48,7 @@ export class DialogComponent implements OnInit {
       "area": this.detailProfile.value.area,
       "length": this.detailProfile.value.length,
       "width": this.detailProfile.value.width,
-      "note": this.detailProfile.value.notes
+      //"note": this.detailProfile.value.notes
       
     }
 

@@ -23,7 +23,6 @@
                 <th>Площадь</th>
                 <th>Длина</th>
                 <th>Ширина</th>
-                <th>Примечание</th>
                 <th>Изменить</th>
             </tr>
         </thead>
@@ -35,13 +34,12 @@
                 <td>{{ d.area }}</td>
                 <td>{{ d.length }}</td>
                 <td>{{ d.width }}</td>
-                <td>{{ d.note }}</td>
                 <td> 
-                    <button mat-mini-fab (click)="deleteDetail(d)">
+                    <button mat-mini-fab class="button" (click)="deleteDetail(d)">
                         <mat-icon>delete_outline</mat-icon>
                     </button>
-
-                    <button mat-mini-fab (click)="openEditDialog(d)">
+ 
+                    <button mat-mini-fab class="button" (click)="openEditDialog(d)">
                         <mat-icon>edit</mat-icon>
                     </button>
                     

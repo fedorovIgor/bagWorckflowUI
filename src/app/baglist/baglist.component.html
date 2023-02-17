@@ -9,7 +9,6 @@
         
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Изменить</button>
       <button routerLink="/plan" mat-button (click)="addToPlan(b)">Добавить в план</button>
     </mat-card-actions>
   </mat-card>
@@ -18,7 +17,7 @@
 <div  routerLink="/bag-create" routerLinkActive="active"  (click)="addNewBag()">
   <mat-card class="card">
     <mat-card-header>
-      Добавить сумку
+      <mat-card-title>Добавить сумку</mat-card-title>
     </mat-card-header>
     
     <div class="icon">

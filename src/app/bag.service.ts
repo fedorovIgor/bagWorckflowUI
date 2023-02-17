@@ -15,29 +15,31 @@ export class BagService {
 
   constructor(private http: HttpClient) { }
 
+  hostLink: string = "http://192.168.1.100:8080/";
+
   getBags(): Observable<Bag[]> {
-    return this.http.get<Bag[]>("http://localhost:8080/api/v1/bag")
+    return this.http.get<Bag[]>(this.hostLink + "api/v1/bag")
   }
 
   saveBag(bag: Bag): Observable<Bag> {
-    return this.http.post<Bag>("http://localhost:8080/api/v1/bag", bag)
+    return this.http.post<Bag>(this.hostLink + "api/v1/bag", bag)
   }
 
 
   getMaterials(): Observable<Material[]> {
-    return this.http.get<Material[]>("http://localhost:8080/api/v1/material")
+    return this.http.get<Material[]>(this.hostLink + "api/v1/material")
   }
 
   addMaterial(material : Material) : Observable<Material> {
-    return this.http.post<Material>("http://localhost:8080/api/v1/material", material)
+    return this.http.post<Material>(this.hostLink +  "api/v1/material", material)
   }
 
   updateMaterial(material : Material) :  Observable<Material> {
-    return this.http.put<Material>("http://localhost:8080/api/v1/material", material)
+    return this.http.put<Material>(this.hostLink + "api/v1/material", material)
   }
 
   getCuttingSheet(planInfoId: number) : Observable<CuttingSheet> {
-    return this.http.get<CuttingSheet>("http://localhost:8080/api/v1/sheet/" + planInfoId);
+    return this.http.get<CuttingSheet>(this.hostLink + "api/v1/sheet/" + planInfoId);
   }
 
 
@@ -51,15 +53,15 @@ export class BagService {
 
   savePlan(plan : Plan) : Observable<Plan>{
 
-    return this.http.post<Plan>("http://localhost:8080/api/v1/plan", plan)
+    return this.http.post<Plan>(this.hostLink + "api/v1/plan", plan)
     
   }
 
   getPlans() : Observable<Plan[]> {
-    return this.http.get<Plan[]>("http://localhost:8080/api/v1/plan")
+    return this.http.get<Plan[]>(this.hostLink + "api/v1/plan")
   }
 
   getPlan(id : number) : Observable<Plan> {
-    return this.http.get<Plan>("http://localhost:8080/api/v1/plan/" + id );
+    return this.http.get<Plan>(this.hostLink + "api/v1/plan/" + id );
   }
 }

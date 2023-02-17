@@ -34,15 +34,15 @@ export class MaterialComponent implements OnInit {
 
   clickedRows(material: Material) {
     const dialogRef = this.dialog.open(MaterialDialogComponent, {
-      width: '60%',
+      width: '300px',
       data: material
     });
 
     dialogRef.afterClosed().subscribe(result => {
 
-      if (result !== undefined) {
-        dialogRef.close();
-      }
+      if (result === undefined) 
+        return;
+      
 
       const index = this.materials.indexOf(material);
 
@@ -60,12 +60,14 @@ export class MaterialComponent implements OnInit {
 
   addMaterial() {
     const dialogRef = this.dialog.open(MaterialDialogComponent, {
-      width: '60%'
+      width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
 
-      if (result !== undefined)
+      if (result === undefined)
+        return;
+
       this.bagService.addMaterial(result)
         .subscribe((d) => {
           this.materials.push(d);
