@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BagComponent } from './bag/bag.component';
 import { BaglistComponent } from './baglist/baglist.component';
+import { DesckComponent } from './desck/desck.component';
 import { MaterialComponent } from './material/material.component';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { PlanListComponent } from './plan-list/plan-list.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
     {path: 'material', component: MaterialComponent},
     {path: 'plan', component: PlanComponent},
     {path: 'plan-list', component: PlanListComponent},
-    {path: 'plan-info/:id', component: PlanInfoComponent}
+    {path: 'plan-info/:id', component: PlanInfoComponent},
+    {path: 'plan-desck/:id', component: DesckComponent}
 ];
 
 @NgModule({

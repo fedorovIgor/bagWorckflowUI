@@ -1,0 +1,28 @@
+<button mat-raised-button (click)="onClick()">Показать в таблице</button>
+
+<div cdkDropListGroup class="root">
+    <h2>{{ desck.name }}</h2>
+    
+    <div *ngIf="desck" class="board-columns">
+
+            <div  *ngFor="let d of desck.columns" class="board-column" >
+                <div class="tasks-container"
+                    cdkDropList
+                    [cdkDropListData]="d.position"
+                    (cdkDropListDropped)="drop($event, d.status)">
+
+                    <div class="column-title">
+                        {{ d.name }} 
+                    </div>
+                     
+                    <div class="task" *ngFor="let p of d.position" cdkDrag [cdkDragData]="p">
+                        {{ p.articul }}
+                        {{ p.bagName }}
+                        {{ p.count }}
+                    </div>
+                </div>
+                
+            </div>
+    </div>
+</div>
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BagService } from '../bag.service';
 import { CuttingSheet } from '../model/CuttingSheet';
 import { Plan } from '../model/plan';
@@ -15,7 +15,8 @@ export class PlanInfoComponent implements  OnInit {
   cuttingSheets : CuttingSheet[] = [];
 
   constructor(private activateRoute: ActivatedRoute,
-    private bagService: BagService) {}
+    private bagService: BagService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
@@ -33,6 +34,13 @@ export class PlanInfoComponent implements  OnInit {
       })
     })
 
+  }
+
+  onClick() {
+    if (this.plan.id === undefined)
+      return ;
+
+    this.router.navigateByUrl("/plan-desck/" + this.plan.id)
   }
 
 }

@@ -8,7 +8,6 @@ import { BagComponent } from './bag/bag.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { DialogComponent } from './bag/dialog/dialog.component'
@@ -28,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { MaterialDialogComponent } from './material/dialog/dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DesckComponent } from './desck/desck.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MaterialDialogComponent,
     PlanComponent,
     PlanListComponent,
-    PlanInfoComponent
+    PlanInfoComponent,
+    DesckComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatAutocompleteModule,
     MatDividerModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

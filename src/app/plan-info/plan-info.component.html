@@ -1,6 +1,8 @@
 <div *ngIf="plan">
     <h2> План от {{plan.date | date:'shortDate'}}</h2>
 
+    <button mat-raised-button (click)="onClick()">Показать по статусам</button>
+
     <div *ngIf="cuttingSheets">
 
         <mat-accordion>

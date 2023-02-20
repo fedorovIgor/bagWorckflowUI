@@ -64,4 +64,8 @@ export class BagService {
   getPlan(id : number) : Observable<Plan> {
     return this.http.get<Plan>(this.hostLink + "api/v1/plan/" + id );
   }
+
+  updateStatus(sheet :  CuttingSheet) : Observable<CuttingSheet>  {
+    return this.http.put<CuttingSheet>(this.hostLink + "api/v1/sheet", sheet );
+  }
 }
