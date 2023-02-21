@@ -7,6 +7,7 @@ import { CuttingSheet } from './model/CuttingSheet';
 import { Material } from './model/material';
 import { Plan } from './model/plan';
 import { PlanInfo } from './model/planInfo';
+import { PlanPage } from './model/planPage';
 
 @Injectable({
   providedIn: 'root'
@@ -57,8 +58,10 @@ export class BagService {
     
   }
 
-  getPlans() : Observable<Plan[]> {
-    return this.http.get<Plan[]>(this.hostLink + "api/v1/plan")
+  getPlansPage(page: number, size: number) : Observable<PlanPage> {
+    return this.http.get<PlanPage>(this.hostLink + "api/v1/plan" 
+          + "?page=" + page
+          + "&size=" + size)
   }
 
   getPlan(id : number) : Observable<Plan> {
