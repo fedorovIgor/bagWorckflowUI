@@ -23,11 +23,13 @@ export class PlanComponent implements OnInit{
   myControl = new FormControl('');
   filteredOptions!: Observable<string[]>;
 
+
   planInfo : PlanInfo[] = [];
 
   form = this.fb.group({
     bagId: new FormControl(),
     count: new FormControl(),
+    mainMaterial: new FormControl(),
     details: this.fb.array([])
   });
 
@@ -92,6 +94,7 @@ export class PlanComponent implements OnInit{
     const p: PlanInfo = {
       bagId: this.form.value.bagId,
       count: this.form.value.count,
+      materialName : this.form.value.mainMaterial,
       bagName: this.bag.name,
       sheetDetails: []
     } 

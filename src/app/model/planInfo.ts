@@ -5,5 +5,6 @@ export interface PlanInfo {
     bagId: number;
     bagName: string;
     count: number;
+    materialName : string;
     sheetDetails: SheetDetail[];
 }

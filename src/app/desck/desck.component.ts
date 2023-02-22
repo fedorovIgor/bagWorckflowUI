@@ -94,7 +94,8 @@ export class DesckComponent implements OnInit {
       id: s.id,
       bagName: s.bagName,
       count: s.count,
-      articul: s.vendorCode
+      articul: s.vendorCode,
+      materialName: s.materialName
     }
 
     console.log("display position" + position);
@@ -171,6 +172,7 @@ export class DesckComponent implements OnInit {
       vendorCode : position.articul,
       count : position.count,
       status : status,
+      materialName : position.materialName,
       details : []
     }
     this.bagService.updateStatus(cuttingSheet)

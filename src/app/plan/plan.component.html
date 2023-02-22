@@ -9,6 +9,21 @@
         <input required matInput type="text" formControlName="count">
     </mat-form-field>
 
+    <mat-form-field class="count" appearance="fill">
+        <mat-label>Материал</mat-label>
+        <input required type="text"
+                placeholder="Выберете из списка"
+                aria-label="Number"
+                matInput
+                [matAutocomplete]="auto"
+                formControlName="mainMaterial">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>  
+
     <div>
         <ng-container formArrayName="details">
             <ng-container *ngFor="let detailForm of details.controls; let i = index" >
@@ -18,7 +33,7 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Материал</mat-label>
                         <input required type="text"
-                                placeholder="Pick one"
+                                placeholder="Выберете из списка"
                                 aria-label="Number"
                                 matInput
                                 [matAutocomplete]="auto"

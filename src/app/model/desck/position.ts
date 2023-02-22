@@ -3,5 +3,5 @@ export interface Position {
     articul: number;
     bagName: string;
     count: number;
-    
+    materialName: string;
 }

@@ -6,6 +6,7 @@ export interface CuttingSheet {
     bagName : string;
     vendorCode : number;
     count : number;
+    materialName : string;
     status : string;
     details : CuttingSheetDetail[];
 }
