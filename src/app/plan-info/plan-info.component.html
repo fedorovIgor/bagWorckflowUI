@@ -1,7 +1,8 @@
 <div *ngIf="plan">
     <h2> План от {{plan.date | date:'shortDate'}}</h2>
 
-    <button mat-raised-button (click)="onClick()">Показать по статусам</button>
+    <button mat-raised-button (click)="onPlanDesck()">Показать по статусам</button>
+    <button mat-raised-button (click)="onBagPrice()">Показать цену сумок</button>
 
     <div *ngIf="cuttingSheets">
 

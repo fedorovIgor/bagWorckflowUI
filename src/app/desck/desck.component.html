@@ -1,7 +1,9 @@
 <button mat-raised-button (click)="onClick()">Показать в таблице</button>
+<button mat-raised-button (click)="onBagPrice()">Показать цену сумок</button>
+
 
 <div cdkDropListGroup class="root">
-    <h2>{{ desck.name }}</h2>
+    <h2>{{ desck.name }} {{desck.date | date:'shortDate'}} </h2>
     
     <div *ngIf="desck" class="board-columns">
 

@@ -29,7 +29,8 @@ import { MaterialDialogComponent } from './material/dialog/dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { DesckComponent } from './desck/desck.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { BagPriceComponent } from './bag-price/bag-price.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatPaginatorModule} from '@angular/material/paginator'
     PlanComponent,
     PlanListComponent,
     PlanInfoComponent,
-    DesckComponent
+    DesckComponent,
+    BagPriceComponent
   ],
   imports: [
     BrowserModule,

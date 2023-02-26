@@ -1,0 +1,46 @@
+<button mat-raised-button (click)="onClick()">Показать в таблице</button>
+<button mat-raised-button (click)="onPlanDesck()">Показать по статусам</button>
+
+<div *ngIf="plan">
+    <h2> План от {{plan.date | date:'shortDate'}}</h2>
+
+    <div *ngFor="let b of bagPriceInfo">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ b.bagName }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <br>Колличество: {{ b.bagsCount }}
+                <br>Цена Материалов: {{ b.bagPrice }}
+                <br>Цена общая: {{ b.totalPrice }}
+                <br>Материалы: 
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Деталей</th>
+                            <th>Общая Площадь</th>
+                            <th>Цена за погонный</th>
+                            <th>Цена всего</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of b.materialsConsumption">
+                            <td>{{ m.materialName }}</td>
+                            <td>{{ m.detailsCount }}</td>
+                            <td>{{ m.detailArea }}</td>
+                            <td>{{ m.price }}</td>
+                            <td>{{ m.totalPrice }}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+
+
+            </mat-card-content>
+          </mat-card>
+        
+        
+        
+    </div>
+</div>

@@ -85,7 +85,8 @@ export class DesckComponent implements OnInit {
 
 
   loadDesck() {
-    this.desck.name = "Пан от " + this.plan.date;
+    this.desck.name = "Пан от " ;
+    this.desck.date  = this.plan.date;
   }
 
   //PLANNED, CUT, GLUING, PAINT, SEWING, SHIPMENT, COMPLETED;
@@ -144,6 +145,14 @@ export class DesckComponent implements OnInit {
       return ;
 
     this.router.navigateByUrl("/plan-info/" + this.plan.id)
+  }
+
+  
+  onBagPrice() {
+    if (this.plan.id === undefined)
+      return ;
+
+    this.router.navigateByUrl("/bag-price/" + this.plan.id)
   }
 
   drop(event: CdkDragDrop<Position[]>, status : string) {

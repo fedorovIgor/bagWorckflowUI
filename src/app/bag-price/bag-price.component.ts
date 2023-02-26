@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BagService } from '../bag.service';
-import { CuttingSheet } from '../model/CuttingSheet';
+import { BagPriceInfo } from '../model/bagPriceInfo';
 import { Plan } from '../model/plan';
 
 @Component({
-  selector: 'app-plan-info',
-  templateUrl: './plan-info.component.html',
-  styleUrls: ['./plan-info.component.css']
+  selector: 'app-bag-price',
+  templateUrl: './bag-price.component.html',
+  styleUrls: ['./bag-price.component.css']
 })
-export class PlanInfoComponent implements  OnInit {
+export class BagPriceComponent implements  OnInit {
 
   plan !: Plan;
-  cuttingSheets : CuttingSheet[] = [];
+  bagPriceInfo : BagPriceInfo[] = [];
 
   constructor(private activateRoute: ActivatedRoute,
     private bagService: BagService,
@@ -22,18 +22,25 @@ export class PlanInfoComponent implements  OnInit {
     this.activateRoute.params.subscribe(params => {
       this.bagService.getPlan(params["id"]).subscribe(plan => {
         this.plan = plan;
-        this.loadCuttingSheets();
+        this.loadBagPriceInfo();
       });
     });
   }
 
-  loadCuttingSheets() {
+  loadBagPriceInfo() {
     this.plan.planInfo.forEach(i => {
-      this.bagService.getCuttingSheet(i.id!).subscribe( cut => {
-        this.cuttingSheets.push(cut);
+      this.bagService.getBagPriceInfo(i.id!).subscribe( cut => {
+        this.bagPriceInfo.push(cut);
       })
     })
 
+  }
+
+  onClick() {
+    if (this.plan.id === undefined)
+      return ;
+
+    this.router.navigateByUrl("/plan-info/" + this.plan.id)
   }
 
   onPlanDesck() {
@@ -42,12 +49,4 @@ export class PlanInfoComponent implements  OnInit {
 
     this.router.navigateByUrl("/plan-desck/" + this.plan.id)
   }
-
-  onBagPrice() {
-    if (this.plan.id === undefined)
-      return ;
-
-    this.router.navigateByUrl("/bag-price/" + this.plan.id)
-  }
-
 }

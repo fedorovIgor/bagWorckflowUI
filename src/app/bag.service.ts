@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BAG, BAG_TO_PLAN, MATERIALS, MOCK_PLANS } from './mock-models';
 import { Bag } from './model/bag';
+import { BagPriceInfo } from './model/bagPriceInfo';
 import { CuttingSheet } from './model/CuttingSheet';
 import { Material } from './model/material';
 import { Plan } from './model/plan';
@@ -70,5 +71,9 @@ export class BagService {
 
   updateStatus(sheet :  CuttingSheet) : Observable<CuttingSheet>  {
     return this.http.put<CuttingSheet>(this.hostLink + "api/v1/sheet", sheet );
+  }
+
+  getBagPriceInfo(planInfoId : number) : Observable<BagPriceInfo> {
+    return  this.http.get<BagPriceInfo>(this.hostLink + "api/v1/sheet/" + planInfoId + "/price" );
   }
 }
