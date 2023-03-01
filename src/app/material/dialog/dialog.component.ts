@@ -21,13 +21,15 @@ export class MaterialDialogComponent {
     this.detailProfile = new FormGroup( {
       id:  new FormControl,
       name: new FormControl(''),
-      count: new FormControl()
+      balance: new FormControl(),
+      materialPrice: new FormControl()
     })
 
     if(this.editData) {
       this.detailProfile.controls["id"].setValue(this.editData.id);
       this.detailProfile.controls["name"].setValue(this.editData.name);
-      this.detailProfile.controls["count"].setValue(this.editData.count);
+      this.detailProfile.controls["balance"].setValue(this.editData.balance);
+      this.detailProfile.controls["materialPrice"].setValue(this.editData.materialPrice);
     }
   }
 
@@ -36,7 +38,8 @@ export class MaterialDialogComponent {
     let detail: Material = {
       "id": this.detailProfile.value.id,
       "name": this.detailProfile.value.name,
-      "balance": this.detailProfile.value.count
+      "balance": this.detailProfile.value.balance,
+      "materialPrice": this.detailProfile.value.materialPrice
     }
 
     console.log(this.detailProfile)

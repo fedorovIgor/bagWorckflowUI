@@ -164,6 +164,7 @@ export class DesckComponent implements OnInit {
         event.currentIndex);
     } else {
 
+      console.log(event)
       this.updateCutingSheetStatus(event.item.data, status);
 
       transferArrayItem(

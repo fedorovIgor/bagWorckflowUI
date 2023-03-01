@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BagService } from '../bag.service';
-import { BAG } from '../mock-models';
 import { Bag } from '../model/bag';
 
 @Component({

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { BAG, BAG_TO_PLAN, MATERIALS, MOCK_PLANS } from './mock-models';
+import { BAG_TO_PLAN,  MOCK_PLANS } from './mock-models';
 import { Bag } from './model/bag';
 import { BagPriceInfo } from './model/bagPriceInfo';
 import { CuttingSheet } from './model/CuttingSheet';

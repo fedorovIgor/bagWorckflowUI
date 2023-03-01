@@ -13,7 +13,7 @@ import { MaterialDialogComponent } from './dialog/dialog.component';
 export class MaterialComponent implements OnInit {
 
   materials : Material[] = [];
-  displayedColumns: string[] = ['name', 'balance'];
+  displayedColumns: string[] = ['name', 'balance', 'materialPrice'];
   dataSource : any ;
 
   constructor(private bagService: BagService,
