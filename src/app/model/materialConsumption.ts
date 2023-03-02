@@ -5,5 +5,4 @@ export interface MaterialConsumption {
     detailArea: number,
     price: number;
     totalPrice: number;
-    detailsCount: number;
 }

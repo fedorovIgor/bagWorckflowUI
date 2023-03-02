@@ -1,5 +1,6 @@
 <button mat-raised-button (click)="onClick()">Показать в таблице</button>
 <button mat-raised-button (click)="onPlanDesck()">Показать по статусам</button>
+<button mat-raised-button disabled>Показать цену сумок</button>
 
 <div *ngIf="plan">
     <h2> План от {{plan.date | date:'shortDate'}}</h2>
@@ -19,7 +20,6 @@
                     <thead>
                         <tr>
                             <th>Наименование</th>
-                            <th>Деталей</th>
                             <th>Общая Площадь</th>
                             <th>Цена за погонный</th>
                             <th>Цена всего</th>
@@ -28,7 +28,6 @@
                     <tbody>
                         <tr *ngFor="let m of b.materialsConsumption">
                             <td>{{ m.materialName }}</td>
-                            <td>{{ m.detailsCount }}</td>
                             <td>{{ m.detailArea }}</td>
                             <td>{{ m.price }}</td>
                             <td>{{ m.totalPrice }}</td>
