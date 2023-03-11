@@ -1,6 +1,8 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropList } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { BagService } from '../bag.service';
 import { CuttingSheet } from '../model/CuttingSheet';
 import { Desck } from '../model/desck/desck';
@@ -60,7 +62,8 @@ export class DesckComponent implements OnInit {
 
   constructor(private activateRoute: ActivatedRoute,
     private bagService: BagService,
-    private router: Router) {}
+    private router: Router,
+    private _snackBar: MatSnackBar) {}
   
 
   ngOnInit(): void {
@@ -165,17 +168,25 @@ export class DesckComponent implements OnInit {
     } else {
 
       console.log(event)
-      this.updateCutingSheetStatus(event.item.data, status);
+      this.updateCutingSheetStatus(event.item.data, status)
+        .subscribe( x => {
+          transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex)
+          } , (error: any) => {
+            console.log(error)
+            if (error.status == 403)
+            this._snackBar.open("неавторизованный пользователь", "close");
+          }
+        );
 
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+      
     }
   }
 
-  updateCutingSheetStatus(position : Position, status : string) {
+  updateCutingSheetStatus(position : Position, status : string) : Observable<CuttingSheet> {
     let cuttingSheet : CuttingSheet = {
       id : position.id,
       bagName : position.bagName,
@@ -185,8 +196,7 @@ export class DesckComponent implements OnInit {
       materialName : position.materialName,
       details : []
     }
-    this.bagService.updateStatus(cuttingSheet)
-      .subscribe(e => console.log(e));
+    return this.bagService.updateStatus(cuttingSheet)
   }   
 
 }

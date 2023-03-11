@@ -1,10 +1,26 @@
 <mat-toolbar>
-  <span>  </span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/plan" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <span>Создать План</span>
+    </button>
+    <button mat-menu-item routerLink="/plan-list" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <span>Список Планов</span>
+    </button>
+    <button mat-menu-item routerLink="/bag-create" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <span>Создать новую сумку</span>
+    </button>
+    <button mat-menu-item routerLink="/material" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <span>Материалы</span>
+    </button>
+    
+  </mat-menu>
+  
   <span class="example-spacer"></span>
-  <button mat-button routerLink="/plan-list" routerLinkActive="active" ariaCurrentWhenActive="page">Список Планов</button>
-  <button mat-button routerLink="/bag-create" routerLinkActive="active" ariaCurrentWhenActive="page">Создать новую сумку</button>
-  <button mat-button routerLink="/material" routerLinkActive="active" ariaCurrentWhenActive="page">Материалы</button>
-  <button mat-button routerLink="/plan" routerLinkActive="active" ariaCurrentWhenActive="page">Создать План</button>
+  <button *ngIf="!token" mat-button (click)="login()">login</button>
+  <button *ngIf="token" mat-button (click)="logout()">logout</button>
   
 </mat-toolbar>
 

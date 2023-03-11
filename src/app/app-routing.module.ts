@@ -17,7 +17,8 @@ const routes: Routes = [
     {path: 'plan-list', component: PlanListComponent},
     {path: 'plan-info/:id', component: PlanInfoComponent},
     {path: 'plan-desck/:id', component: DesckComponent},
-    {path: 'bag-price/:id', component: BagPriceComponent}
+    {path: 'bag-price/:id', component: BagPriceComponent},
+    { path: '**', redirectTo: 'plan-list', pathMatch: 'full' }
     
 ];
 

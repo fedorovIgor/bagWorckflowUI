@@ -17,7 +17,7 @@ export class BagService {
 
   constructor(private http: HttpClient) { }
 
-  hostLink: string = "http://192.168.1.100:8080/";
+  hostLink: string = "http://192.168.1.100:8085/";
 
   getBags(): Observable<Bag[]> {
     return this.http.get<Bag[]>(this.hostLink + "api/v1/bag")
@@ -70,7 +70,7 @@ export class BagService {
   }
 
   updateStatus(sheet :  CuttingSheet) : Observable<CuttingSheet>  {
-    return this.http.put<CuttingSheet>(this.hostLink + "api/v1/sheet", sheet );
+    return this.http.put<CuttingSheet>(this.hostLink + "api/v1/sheet", sheet);
   }
 
   getBagPriceInfo(planInfoId : number) : Observable<BagPriceInfo> {

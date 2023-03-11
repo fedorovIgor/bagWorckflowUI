@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -23,14 +23,19 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDividerModule} from '@angular/material/divider';
 import { PlanListComponent } from './plan-list/plan-list.component';
 import {MatListModule} from '@angular/material/list';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { MaterialDialogComponent } from './material/dialog/dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { DesckComponent } from './desck/desck.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { BagPriceComponent } from './bag-price/bag-price.component'
+import { BagPriceComponent } from './bag-price/bag-price.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
+import { NullValidationHandler, provideOAuthClient, ValidationHandler } from 'angular-oauth2-oidc';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { HeadersInterceptor } from './headers.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,7 @@ import { BagPriceComponent } from './bag-price/bag-price.component'
     PlanInfoComponent,
     DesckComponent,
     BagPriceComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,7 @@ import { BagPriceComponent } from './bag-price/bag-price.component'
     NgbModule,
     HttpClientModule,
     DragDropModule,
+    
 
     MatButtonModule,
     MatIconModule,
@@ -67,9 +74,21 @@ import { BagPriceComponent } from './bag-price/bag-price.component'
     MatDividerModule,
     MatListModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatMenuModule,
+
+    OAuthModule.forRoot({
+      resourceServer: {
+          allowedUrls: ['http://192.168.1.100:8085'],
+          sendAccessToken: true
+      }
+  })
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
